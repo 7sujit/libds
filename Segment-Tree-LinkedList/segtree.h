@@ -17,11 +17,11 @@ struct SegTreeNode
 };
 
 /*
-    'build_seg_tree' function takes three arguements 
+    'build_seg_tree' function takes three arguements
     1-> array of type int as first arguement
     2-> first index of the array
     3-> last index of the array
-    
+
     after creating the segment tree 'build_seg_tree' returns the address of the root noe
 */
 
