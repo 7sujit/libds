@@ -14,7 +14,7 @@ int segment_tree_size( int input_size )
         }
         return (1 << (i+1) ) - 1;
     }
-    else
+    else // if power of two then this will be segment tree array size
     {
         return (input_size << 1) - 1;
     }
