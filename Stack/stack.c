@@ -1,9 +1,5 @@
 #include "stack.h"
 
-int stack_top;
-
-
-
 stack_t *create_stack()
 {
     stack_t *new_stack = (stack_t *) malloc (sizeof(stack_t));
