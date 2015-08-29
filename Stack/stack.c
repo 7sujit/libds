@@ -1,5 +1,6 @@
 #include "stack.h"
 
+
 stack_t *create_stack()
 {
     stack_t *new_stack = (stack_t *) malloc (sizeof(stack_t));
@@ -8,6 +9,7 @@ stack_t *create_stack()
 
     return new_stack;
 }
+
 
 void push(stack_t* curr_stack,void *obj)
 {
@@ -53,17 +55,3 @@ void swap( void *first,  void *second, int size)
     memcpy(first, second, size);
     memcpy(second, temp, size);
 }
-
-
-/*
-    creates a stack header which will hold 'stack_top'
-    whichi will be pointing to the top of the stack.
-    another variable 'element_count' storing the no. of elements
-    in the stack currently.
-*/
-
-/*
-    PUSH FUNCTION CAN BE APPLIED USING BY PUSHING A POINTER
-    TO THE OBJECT, IN THIS CASE WE WILL BE PUSHING POINTER OF
-    TYPE `void *`
-*/
