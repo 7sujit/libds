@@ -4,10 +4,12 @@
 #ifndef _H_HEAP
 #define _H_HEAP
 
-/************************************************************
-    WARNING : MUST HAVE TO PREPARE THE COMPARATOR FUNCTION
+/******************************************************************************
+    WARNING :   MUST HAVE TO PREPARE THE COMPARATOR FUNCTION
+                AND THE UPDATER FUNCTION.
 
- ************************************************************/
+
+ ******************************************************************************/
 
 int cmp(const void *a, const void *b);
 
