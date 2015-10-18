@@ -97,3 +97,21 @@ void call_dijkestra(void **heap, int source , int nodes)
     }
     printf("\n");
 }
+
+void free_graph(Node *graph, int nodes)
+{
+    AdjNode *prev, *node;
+    int i;
+    
+    for(i = 0; i < nodes; ++i)
+    {
+        node = graph[i].adj;
+        while(node)
+        {
+            prev = node;
+            node = node->next;
+            free(prev);
+        }
+    }
+    free(graph);
+}

@@ -37,4 +37,6 @@ void call_dijkestra(void **heap, int source, int nodes);
 
 void print_graph(int nodes);
 
+void free_graph(Node *graph, int nodes);
+
 #endif

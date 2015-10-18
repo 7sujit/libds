@@ -37,6 +37,8 @@ int main(void)
         printf("%d : %d (p : %d)\n", i , graph[i].d, graph[i].p);
     }
 
+    free_graph(graph, nodes);
+    free(heap);
 
     return 0;
 }
