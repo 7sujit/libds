@@ -26,7 +26,6 @@ Node *create_graph(int size)
         graph[i].id = i;
         graph[i].d = INT_MAX;
         graph[i].heap_index = i;
-        graph[i].visited = 0;
         graph[i].p = -1;
         graph[i].adj = NULL;
     }
@@ -39,9 +38,12 @@ Node *create_graph(int size)
 void add_edge(int source, int dest, int cost)
 {
     AdjNode *node = make_node(dest, cost);
-
     node->next = graph[source].adj;
     graph[source].adj = node;
+
+    node = make_node(source, cost);
+    node->next = graph[dest].adj;
+    graph[dest].adj = node;
 
 }
 
@@ -67,42 +69,11 @@ void print_graph(int nodes)
 }
 
 
-void call_dijkestra(void **heap, int source , int nodes)
-{
-    Node *node;
-    AdjNode *adj;
-    int i;
-
-    for ( i = 0; i < nodes; i++)
-        heap[i] = &graph[i];
-
-    decrease_key(heap, source, 0);
-
-
-    while(heap_size)
-    {
-        node = (Node *) extract_min(heap);
-        adj = node->adj;
-
-        while(adj)
-        {
-            if(graph[adj->id].visited == 0 &&  graph[adj->id].d > adj->cost + node->d )
-            {
-                decrease_key(heap, graph[adj->id].heap_index, (adj->cost + node->d) );
-                graph[adj->id].p = node->id;
-            }
-
-            adj = adj->next;
-        }
-    }
-    printf("\n");
-}
-
 void free_graph(Node *graph, int nodes)
 {
     AdjNode *prev, *node;
     int i;
-    
+
     for(i = 0; i < nodes; ++i)
     {
         node = graph[i].adj;

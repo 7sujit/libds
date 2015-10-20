@@ -34,7 +34,16 @@ int main(void)
 
     for(i = 0; i < nodes; ++i)
     {
-        printf("%d : %d (p : %d)\n", i , graph[i].d, graph[i].p);
+    	if(i == source)
+    	   printf("%d : %d (source)\n", i , graph[i].d);
+
+        else if(graph[i].id != source && graph[i].p == -1)
+        {
+            printf("%d : %s (p : %d)\n", i , "infi", graph[i].p);
+            continue;
+        }
+        else
+            printf("%d : %d (p : %d)\n", i , graph[i].d, graph[i].p);
     }
 
     free_graph(graph, nodes);

@@ -10,7 +10,6 @@ typedef struct Node
 {
     int id;
     int heap_index;
-    int visited;
 
     int d;
     int p;
