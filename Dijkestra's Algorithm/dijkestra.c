@@ -26,7 +26,7 @@ void call_dijkestra(void **heap, int source , int nodes)
 
         while(adj)
         {
-            if(graph[adj->id].visited == 0 &&  graph[adj->id].d > adj->cost + node->d )
+            if(graph[adj->id].d > adj->cost + node->d )
             {
                 decrease_key(heap, graph[adj->id].heap_index, (adj->cost + node->d) );
                 graph[adj->id].p = node->id;
