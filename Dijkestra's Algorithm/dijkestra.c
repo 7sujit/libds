@@ -19,14 +19,15 @@ void call_dijkestra(void **heap, int source , int nodes)
     while(heap_size)
     {
         node = (Node *) extract_min(heap);
-        if(node->d == INT_MAX)
+        if(node->d == INT_MAX) // check for disconnected paths
             break;
 
         adj = node->adj;
+        graph[node->id].visited = 1;
 
         while(adj)
         {
-            if(graph[adj->id].d > adj->cost + node->d )
+            if( (!graph[adj->id].visited) && graph[adj->id].d > adj->cost + node->d )
             {
                 decrease_key(heap, graph[adj->id].heap_index, (adj->cost + node->d) );
                 graph[adj->id].p = node->id;
@@ -35,5 +36,4 @@ void call_dijkestra(void **heap, int source , int nodes)
             adj = adj->next;
         }
     }
-    printf("\n");
 }

@@ -25,6 +25,7 @@ Node *create_graph(int size)
     {
         graph[i].id = i;
         graph[i].d = INT_MAX;
+        graph[i].visited = 0;
         graph[i].heap_index = i;
         graph[i].p = -1;
         graph[i].adj = NULL;
