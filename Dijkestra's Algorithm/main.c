@@ -9,7 +9,7 @@ int main(void)
     int edges;
     int source, dest, cost;
     int i;
-    void *heap;
+    void **heap;
 
     // printf("%s", "enter no. of nodes and edges : ");
     scanf("%d %d", &nodes, &edges);
