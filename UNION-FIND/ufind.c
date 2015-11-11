@@ -38,6 +38,9 @@ void make_union(int first, int second)
 {
     int large, small;
 
+    if(same_set(first,second))
+        return;
+
     if( uset[uset[first].set_id].size >=  uset[uset[second].set_id].size)
     {
         large = uset[first].set_id;
@@ -59,7 +62,9 @@ void make_union(int first, int second)
 
     (uset[large].list_tail)->next = uset[small].list_head;
     uset[large].list_tail = uset[small].list_tail;
+    uset[large].size += uset[small].size;
 
+    uset[small].size = 0;
     uset[small].list_head = uset[small].list_tail = NULL;
 
 }
