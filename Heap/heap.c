@@ -21,6 +21,7 @@ void update_key(void **heap, int index, int new_val)
 void **create_list(int size)
 {
 	void **list = (void **) malloc(size * sizeof(void *));
+	heap_size = size;
 	return list;
 }
 
