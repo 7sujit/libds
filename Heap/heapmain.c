@@ -22,6 +22,7 @@ int main(void)
     for(i = 0; i < size; ++i)
         heap[i] = &a[i];
 
+
     build_heap(heap);
     print_heap(heap);
 
