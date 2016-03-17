@@ -1,0 +1,68 @@
+void rb_tr_insert(struct Node *node, long int val)
+{
+    struct Node *beta;
+    struct Node *theta;
+    beta = tree_insert(node, val);
+
+    while(beta != root_ptr && beta->p->red)
+    {
+        theta = NULL;
+        if(beta->p->p && (beta->p->p->left == beta->p))
+        {
+            if( (beta->p->p->right) && (beta->p->p->right->red == 1) )
+            {   // CASE 1
+                // colour both theta and parent of beta as black
+                beta->p->p->right->red = 0;
+                beta->p->red = 0;
+            }
+            else
+            {
+                if(beta == beta->p->right) // CASE - 2
+                {
+                    puts("left_rotate");
+                    left_rotate(beta->p, beta);
+                }
+                // CASE - 3
+
+                    beta = right_rotate(beta->p->p, beta->p);
+                    (beta->left)? update_count(beta->left) : (beta->lcount = 0);
+                    (beta->right)? update_count(beta->right) : (beta->rcount = 0);
+
+                    update_count(beta);
+            }
+        }
+        else if(beta->p->p && (beta->p->p->right == beta->p))
+        {
+            if( (beta->p->p->left) && (beta->p->p->left->red == 1) )
+            {   // CASE 1
+                // colour both theta and parent of beta as black
+                beta->p->p->left->red = 0;
+                beta->p->red = 0;
+            }
+            else
+            {
+                if(!beta->p)
+                    puts("beta parent is null");
+
+                if(beta == beta->p->left) // CASE - 2
+                {
+
+                    puts("right right_rotate");
+                    right_rotate(beta->p, beta);
+                }
+                // CASE - 3
+                if(!theta)
+                    theta = beta->p;
+
+                    beta = left_rotate(beta->p->p, beta->p);
+                    (beta->left)? update_count(beta->left) : (beta->lcount = 0);
+                    (beta->right)? update_count(beta->right) : (beta->rcount = 0);
+
+                    update_count(beta);
+
+            }
+        }
+        root_ptr->red = 0;
+    }
+
+}
